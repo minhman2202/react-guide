@@ -2,13 +2,10 @@ import { CORE_CONCEPTS } from "./data.js";
 import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept.jsx";
 import TabButton from "./components/TabButton.jsx";
-import { useState } from "react";
 
 function App() {
-  const [dynamicContent, setDynamicContent] = useState("Dynamic Content!");
-
-  function handleSelect(tabName) {
-    setDynamicContent(`You clicked on ${tabName}`);
+  function handleSelect() {
+    console.log("Selected!");
   }
 
   return (
@@ -32,7 +29,7 @@ function App() {
             <TabButton onSelect={() => handleSelect("Props")}>Props</TabButton>
             <TabButton onSelect={() => handleSelect("State")}>State</TabButton>
           </menu>
-          {dynamicContent}
+          Dynamic Content
         </section>
       </main>
     </div>
