@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { EXAMPLES } from '../data.js';
+import Section from './Section.jsx';
 import TabButton from './TabButton.jsx';
 
 export default function Examples() {
@@ -9,8 +10,7 @@ export default function Examples() {
         setSelectedTopic(content);
     }
     return (
-        <section id="examples">
-          <h2>Examples</h2>
+        <Section id="examples" title="Examples">
           <menu>
             <TabButton isSelected={selectedTopic === 'components'} onSelect={() => handleSelect("components")}>Components</TabButton>
             <TabButton isSelected={selectedTopic === 'jsx'} onSelect={() => handleSelect("jsx")}>JSX</TabButton>
@@ -30,6 +30,6 @@ export default function Examples() {
               <p>Please select a topic.</p>
             )}
           </div>
-        </section>
+        </Section>
     );
 }
