@@ -6,11 +6,7 @@ import Log from "./components/Log.jsx";
 import GameOver from "./components/GameOver.jsx";
 import {WINNING_COMBINATIONS} from "./winning-combinations.js";
 
-const INITIAL_GAME_BOARD = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
+const INITIAL_GAME_BOARD = Array(10).fill(Array(10).fill(null));
 
 const PLAYERS = {
   X: 'Player 1',
@@ -34,8 +30,10 @@ function deriveWinner(gameBoard, players) {
     const firstSquareSymbol = gameBoard[combination[0].row][combination[0].column];
     const secondSquareSymbol = gameBoard[combination[1].row][combination[1].column];
     const thirdSquareSymbol = gameBoard[combination[2].row][combination[2].column];
+    const fourthSquareSymbol = gameBoard[combination[3].row][combination[3].column];
+    const fifthSquareSymbol = gameBoard[combination[4].row][combination[4].column];
 
-    if (firstSquareSymbol && firstSquareSymbol === secondSquareSymbol && firstSquareSymbol === thirdSquareSymbol) {
+    if (firstSquareSymbol && firstSquareSymbol === secondSquareSymbol && firstSquareSymbol === thirdSquareSymbol && firstSquareSymbol === fourthSquareSymbol && firstSquareSymbol === fifthSquareSymbol) {
       winner = players[firstSquareSymbol];
       break; // stop checking if there is a winner
     }
@@ -67,7 +65,7 @@ function App() {
   const gameBoard = deriveGameBoard(gameTurns);
 
   const winner = deriveWinner(gameBoard, players);
-  const hasDraw = gameTurns.length === 9 && !winner;
+  const hasDraw = gameTurns.length === 100 && !winner;
 
   function handleSelectSquare(rowIndex, colIndex) {
     setGameTurns((prevTurns) => {
