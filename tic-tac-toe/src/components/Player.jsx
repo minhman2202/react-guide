@@ -15,6 +15,12 @@ export default function Player({initialName, symbol, isActive, onChangeName}) {
     setPlayerName(event.target.value);
   }
 
+  function handleKeyDown(event) {
+    if (event.key === 'Enter') {
+      handleEditClick();
+    }
+  }
+
   let editablePlayerName = <span className="player-name">{playerName}</span>;
 
   if (isEditing) {
@@ -22,6 +28,7 @@ export default function Player({initialName, symbol, isActive, onChangeName}) {
       type="text"
       value={playerName}
       onChange={handleChanges}
+      onKeyDown={handleKeyDown}
       autoFocus
       required
     />);
