@@ -8,12 +8,17 @@ import Places from './components/Places.jsx';
 import DeleteConfirmation from './components/DeleteConfirmation.jsx';
 import Modal from './components/Modal.jsx';
 
+const storedPlaceIds = JSON.parse(localStorage.getItem('pickedPlaces')) || [];
+const storedPlaces = storedPlaceIds.map((id) =>
+  AVAILABLE_PLACES.find((place) => place.id === id)
+);
+
 function App() {
   const modal = useRef();
   const selectedPlace = useRef();
 
   const [availablePlaces, setAvailablePlaces] = useState([]);
-  const [pickedPlaces, setPickedPlaces] = useState([]);
+  const [pickedPlaces, setPickedPlaces] = useState(storedPlaces);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -56,6 +61,12 @@ function App() {
       prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
     );
     modal.current.close();
+
+    const storedPlaceIds = JSON.parse(localStorage.getItem('pickedPlaces')) || [];
+    localStorage.setItem(
+      'pickedPlaces',
+      JSON.stringify(storedPlaceIds.filter((id) => id !== selectedPlace.current))
+    );
   }
 
   return (
