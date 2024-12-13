@@ -1,6 +1,7 @@
 import {forwardRef, useImperativeHandle, useRef} from 'react';
 import {createPortal} from 'react-dom';
-import Cart from './Cart';
+
+import Cart from './Cart.jsx';
 
 const CartModal = forwardRef(function Modal(
   {title, actions},
