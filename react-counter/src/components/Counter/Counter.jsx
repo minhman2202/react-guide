@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import {useState, memo} from 'react';
 
 import IconButton from '../UI/IconButton.jsx';
 import MinusIcon from '../UI/Icons/MinusIcon.jsx';
 import PlusIcon from '../UI/Icons/PlusIcon.jsx';
 import CounterOutput from './CounterOutput.jsx';
-import { log } from '../../log.js';
+import {log} from '../../log.js';
 
 function isPrime(number) {
   log(
@@ -27,7 +27,7 @@ function isPrime(number) {
   return true;
 }
 
-export default function Counter({ initialCount }) {
+const Counter = memo(function Counter({initialCount}) {
   log('<Counter /> rendered', 1);
   const initialCountIsPrime = isPrime(initialCount);
 
@@ -51,11 +51,13 @@ export default function Counter({ initialCount }) {
         <IconButton icon={MinusIcon} onClick={handleDecrement}>
           Decrement
         </IconButton>
-        <CounterOutput value={counter} />
+        <CounterOutput value={counter}/>
         <IconButton icon={PlusIcon} onClick={handleIncrement}>
           Increment
         </IconButton>
       </p>
     </section>
   );
-}
+});
+
+export default Counter;
