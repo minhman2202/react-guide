@@ -7,11 +7,13 @@ export default function AvailablePlaces({ onSelectPlace }) {
 
   // useEffect to ensure there is no infinite loop when the component is rendered because of state change
   useEffect(() => {
-    fetch('http://localhost:3000/places').then((response) => {
-      return response.json();
-    }).then((data) => {
+    async function fetchPlaces() {
+      const response = await fetch('http://localhost:3000/places');
+      const data = await response.json();
       setAvailablePlaces(data.places);
-    });
+    }
+
+    fetchPlaces();
   }, []);
 
   return (
