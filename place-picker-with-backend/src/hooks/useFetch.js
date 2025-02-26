@@ -5,6 +5,7 @@ export function useFetch(fetchFn, initialValue = null) {
   const [error, setError] = useState();
   const [fetchedData, setFetchedData] = useState(initialValue);
 
+  // useEffect to ensure there is no infinite loop when the component is rendered because of state change
   useEffect(() => {
     async function fetchData() {
       setIsFetching(true);
