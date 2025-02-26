@@ -9,6 +9,7 @@ export default function Login() {
     event.preventDefault();
     console.log(email.current.value, password.current.value);
 
+    // reset the form
     email.current.value = '';
     password.current.value = '';
   }
