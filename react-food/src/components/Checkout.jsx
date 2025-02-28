@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import {useContext, useActionState} from "react";
 
 import {currencyFormatter} from "../util/formatting.js";
 import CartContext from "../store/CartContext.jsx";
@@ -25,7 +25,6 @@ export default function Checkout() {
 
   const {
     data,
-    isLoading: isSending,
     error,
     sendRequest,
     clearData
@@ -41,7 +40,7 @@ export default function Checkout() {
     clearData();
   }
 
-  async function checkoutAction(fd) {
+  async function checkoutAction(prevState, fd) {
     console.log('Submitting checkout...');
     const customerData = Object.fromEntries(fd.entries());
     // {email: test@example.com, full-name: John Doe, street: 123 Main St, postal-code: 12345, city: Anytown}
@@ -56,6 +55,8 @@ export default function Checkout() {
       }
     }));
   }
+
+  const [formState, formAction, isSending] = useActionState(checkoutAction, null);
 
   let actions = (
     <>
@@ -79,7 +80,7 @@ export default function Checkout() {
 
   return (
     <Modal open={userProgressCtx.progress === 'checkout'} onClose={handleClose}>
-      <form action={checkoutAction}>
+      <form action={formAction}>
         <h2>Checkout</h2>
         <p>Total Amount: {currencyFormatter.format(cartTotal)}</p>
 
