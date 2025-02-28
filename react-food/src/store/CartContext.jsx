@@ -17,10 +17,10 @@ function cartReducer(state, action) {
       let existingItem = state.items[existingCartItemIndex];
       updatedItems[existingCartItemIndex] = {
         ...existingItem,
-        quality: existingItem.quality + 1
+        quantity: existingItem.quantity + 1
       };
     } else {
-      updatedItems.push({...action.item, quality: 1});
+      updatedItems.push({...action.item, quantity: 1});
     }
 
     return {...state, items: updatedItems};
@@ -31,10 +31,10 @@ function cartReducer(state, action) {
     const existingItem = state.items[existingCartItemIndex];
 
     const updatedItems = [...state.items];
-    if (existingItem.quality === 1) {
+    if (existingItem.quantity === 1) {
       updatedItems.splice(existingCartItemIndex, 1);
     } else {
-      updatedItems[existingCartItemIndex] = {...existingItem, quality: existingItem.quality - 1};
+      updatedItems[existingCartItemIndex] = {...existingItem, quantity: existingItem.quantity - 1};
     }
 
     return {...state, items: updatedItems};
