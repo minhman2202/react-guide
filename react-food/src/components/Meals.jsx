@@ -1,4 +1,5 @@
 import MealItem from "./MealItem.jsx";
+import Error from "./Error.jsx";
 import useHttp from "../hooks/useHttp.js";
 
 const requestConfig = {}; // create the http config object here to avoid re-creating it on every render
@@ -12,7 +13,11 @@ export default function Meals() {
   } = useHttp('http://localhost:3000/meals', requestConfig, []); // pass an empty array of meals as initial data
 
   if (isLoading) {
-    return <p>Fetching meals...</p>;
+    return <p className="center">Fetching meals...</p>;
+  }
+
+  if (error) {
+    return <Error title="Failed to fetch meals" message={error}/>;
   }
 
   return (
