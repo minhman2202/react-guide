@@ -6,7 +6,13 @@ const DUMMY_EVENTS = [
     title: 'Programming for everyone',
     description:
       'Everyone can learn to code! Yes, everyone! In this live event'
-  }];
+  },
+  {
+    id: 'e2',
+    title: 'Networking for introverts',
+    description: 'We know: Networking is no fun if you are an introvert person.',
+  }
+];
 
 export default function EventsPage() {
   return (
