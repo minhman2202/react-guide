@@ -22,6 +22,11 @@ export async function action({request, params}) {
     }
   });
 
+  // has validation errors returned from the backend
+  if (response.status === 422) {
+    return response;
+  }
+
   if (!response.ok) {
     throw Response.json({message: 'Could not save event.'}, {status: 500});
   }
