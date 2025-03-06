@@ -1,11 +1,1 @@
-{
-  "events": [
-    {
-      "id": "e1",
-      "title": "A dummy event",
-      "date": "2023-02-22",
-      "image": "https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg",
-      "description": "Join this amazing event and connect with fellow developers."
-    }
-  ]
-}
+{"events":[{"title":"World Cup 2014 Final","image":"https://upload.wikimedia.org/wikipedia/commons/8/89/Germany_and_Argentina_face_off_in_the_final_of_the_World_Cup_2014_-2014-07-13_%285%29.jpg","date":"2014-07-13","description":"A final game of World Cup 2014 between Germany and Argentina","id":"56b8ac1a-0dd0-4154-9992-1262e24a6127"},{"title":"A new event","image":"https://upload.wikimedia.org/wikipedia/commons/f/f9/AI_End-Scenario_1_Rogue_Malware_tamingtheaibeast.png","date":"2025-03-31","description":"Another amazing event","id":"c3a19cc3-61ef-4c07-86ce-5796b8af468f"},{"id":"e1","title":"A dummy event","date":"2023-02-22","image":"https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg","description":"Join this amazing event and connect with fellow developers."}]}
