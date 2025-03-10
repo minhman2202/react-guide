@@ -9,6 +9,7 @@ export default function NewEventsSection() {
   const {data, isPending, isError, error} = useQuery({
     queryKey: ['events'],
     queryFn: fetchEvents,
+    staleTime: 60 * 1000, // don't send request to get data again for 60 seconds
   });
 
   let content;
