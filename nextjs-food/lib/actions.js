@@ -2,6 +2,7 @@
 
 import {saveMeal} from "@/lib/meals";
 import {redirect} from "next/navigation";
+import {revalidatePath} from "next/cache";
 
 function isInvalidText(text) {
   return !text || text.trim() === '';
@@ -34,5 +35,6 @@ export async function shareMeal(prevState, formData) {
   }
 
   await saveMeal(meal);
+  revalidatePath('/meals'); // invalidate meals cache to refresh the list of meals
   redirect('/meals');
 }
