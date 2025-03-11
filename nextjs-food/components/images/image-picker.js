@@ -18,6 +18,7 @@ export default function ImagePicker({label, name}) {
     const file = event.target.files[0];
     if (!file) {
       setPickedImage(null); // make sure that the preview is reset
+      return;
     }
 
     const fileReader = new FileReader();
@@ -45,6 +46,7 @@ export default function ImagePicker({label, name}) {
           name={name}
           accept="image/*" // accept="image/*" allows to select any image type
           onChange={handleImageChange}
+          required
         />
         <button
           className={classes.button}
