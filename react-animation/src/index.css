@@ -314,6 +314,18 @@ main {
   width: 30rem;
   max-width: 90%;
   z-index: 10;
+  animation: slide-down-fade-in 2s ease-out forwards;
+}
+
+@keyframes slide-up-fade-in {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .modal h2 {
