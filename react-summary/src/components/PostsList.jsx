@@ -10,6 +10,16 @@ export default function PostList({isPosting, onStopPosting}) {
   const [posts, setPosts] = useState([]);
 
   function addPostHandler(postData) {
+    fetch("http://localhost:8080/posts", {
+      method: "POST",
+      body: JSON.stringify(postData),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(response => response.json()).then(data => {
+      console.log(data);
+    });
+
     setPosts((prevPosts) => [postData, ...prevPosts]);
   }
 
