@@ -7,27 +7,23 @@ import classes from './PostsList.module.css';
 
 export default function PostList({isPosting, onStopPosting}) {
 
-  const [enteredBody, setEnteredBody] = useState('');
-  const [enteredAuthor, setEnteredAuthor] = useState('');
+  const [posts, setPosts] = useState([]);
 
-  function changeBodyHandler(event) {
-    setEnteredBody(event.target.value);
-  }
-
-  function changeAuthorHandler(event) {
-    setEnteredAuthor(event.target.value);
+  function addPostHandler(postData) {
+    setPosts((prevPosts) => [postData, ...prevPosts]);
   }
 
   return (
     <>
       {isPosting && (
         <Modal onClose={onStopPosting}>
-          <NewPost onBodyChange={changeBodyHandler} onAuthorChange={changeAuthorHandler} onCancel={onStopPosting} />
+          <NewPost onCancel={onStopPosting} onAddPost={addPostHandler}/>
         </Modal>
       )}
       <ul className={classes.posts}>
-        <Post author={enteredAuthor} body={enteredBody}/>
-        <Post author="John Doe" body="React.js is awesome!"/>
+        {posts.map((post, index) => (
+          <Post key={index} author={post.author} body={post.body} />
+        ))}
       </ul>
     </>
   );
