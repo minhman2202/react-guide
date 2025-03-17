@@ -5,8 +5,8 @@ import Modal from "./Modal.jsx";
 import NewPost from "./NewPost.jsx";
 import classes from './PostsList.module.css';
 
-export default function PostList({posts}) {
-  const [modalIsVisible, setModalIsVisible] = useState(true);
+export default function PostList({isPosting, onStopPosting}) {
+
   const [enteredBody, setEnteredBody] = useState('');
   const [enteredAuthor, setEnteredAuthor] = useState('');
 
@@ -18,14 +18,10 @@ export default function PostList({posts}) {
     setEnteredAuthor(event.target.value);
   }
 
-  function hideModalHandler() {
-    setModalIsVisible(false);
-  }
-
   return (
     <>
-      {modalIsVisible && (
-        <Modal onClose={hideModalHandler}>
+      {isPosting && (
+        <Modal onClose={onStopPosting}>
           <NewPost onBodyChange={changeBodyHandler} onAuthorChange={changeAuthorHandler}/>
         </Modal>
       )}
