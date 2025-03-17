@@ -1,10 +1,9 @@
-import Post from "./components/Post.jsx";
+import PostsList from "./components/PostsList.jsx";
 
 function App() {
   return (
     <main>
-      <Post author="John Doe" body="React.js is awesome!"/>
-      <Post author="Jane Doe" body="Next.js is great, too!"/>
+      <PostsList/>
     </main>
   );
 }
